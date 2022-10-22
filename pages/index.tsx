@@ -15,6 +15,7 @@ import {
   Typography
 } from '@mui/material'
 import React, { useState } from 'react'
+import MURSHRASample from '../components/MURSHRASample'
 
 const steps = [
   'Listening Test (Naturalness) 1',
@@ -149,30 +150,7 @@ const Home: NextPage = () => {
               >{stepInfo[activeStep].title}</Typography>
               {stepInfo[activeStep].desc}
               <Divider/>
-              <Stack spacing={2} direction="row">
-                <Typography variant="h6"
-                            sx={{mt: 2, mb: 1}}
-                            color="common.black">Sample A</Typography>
-                <audio
-                  controls
-                  controlsList="nodownload"
-                  src="/icassp2023/parallel/ASI_a0006.wav">
-                  Your browser does not support the
-                  <code>audio</code> element.
-                </audio>
-                <Box sx={{ width: 500 }}>
-                  <Slider
-                    aria-label="accent"
-                    defaultValue={50}
-                    valueLabelDisplay="on"
-                    marks={marks}
-                    step={1}
-                    min={0}
-                    max={100}
-                  />
-                </Box>
-                
-              </Stack>
+              <MURSHRASample sample_index={'A'} audio_src={'/icassp2023/pcm/ASI_a0006.wav'}/>
             </Stack>
             <Stack sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
               <Button
