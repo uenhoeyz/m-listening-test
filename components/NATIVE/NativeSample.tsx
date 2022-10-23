@@ -9,25 +9,21 @@ interface Props {
 const marks = [
   {
     value: 0,
-    label: '0',
+    label: 'No Foreign Accent',
   },
   {
-    value: 50,
-    label: '50',
-  },
-  {
-    value: 100,
-    label: '100',
+    value: 10,
+    label: 'Heavy Foreigner Accent',
   },
 ]
 
-const MURSHRASample = ({audio_src, sample_index}: Props) => {
-  const [score, setScore] = useState<number>(50)
+const NativeSample = ({audio_src, sample_index}: Props) => {
+  const [score, setScore] = useState<number>(5)
 
   const handleChange = (event: Event, newValue: number | number[]) => {
-    setScore(newValue as number);
+    setScore(newValue as number)
   }
-  
+
   return (
     <Stack spacing={2} direction="row">
       <Typography variant="h6"
@@ -40,15 +36,15 @@ const MURSHRASample = ({audio_src, sample_index}: Props) => {
         Your browser does not support the
         <code>audio</code> element.
       </audio>
-      <Box sx={{width: 500}}>
+      <Box sx={{width: 500}} pl={10}>
         <Slider
           aria-label="accent"
-          defaultValue={50}
+          defaultValue={5}
           valueLabelDisplay="on"
           marks={marks}
           step={1}
           min={0}
-          max={100}
+          max={10}
           onChange={handleChange}
         />
       </Box>
@@ -56,4 +52,4 @@ const MURSHRASample = ({audio_src, sample_index}: Props) => {
   )
 }
 
-export default MURSHRASample
+export default NativeSample
