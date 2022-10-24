@@ -75,7 +75,7 @@ const Native: NextPage = () => {
             component="div"
             sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}
           >
-            Listening Test (Naturalness)
+            Listening Test (Accent Level)
           </Typography>
         </Toolbar>
       </AppBar>

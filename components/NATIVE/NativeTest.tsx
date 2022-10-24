@@ -51,16 +51,15 @@ const NativeTest = ({onValueChange}: Props) => {
         sx={{mt: 2, mb: 1}}
         variant="h3"
         color="common.black"
-      >Listening Test (Naturalness)</Typography>
+      >Listening Test (Accent Level)</Typography>
       <Typography sx={{mt: 2, mb: 1}} color="common.black">
         Please listen to the audio samples and choose whether it is spoken by a native English speaker. The score is
-        between
-        0 - 10.
+        between 1 - 9. Here we define the American English as the NATIVE accent.
         <br/><br/>
-        -- 0 Indicates it&#39;s definitely from a native speaker<br/>
-        -- 10 means it&#39;s a foreigner talking for sure
+        -- 1 Indicates it&#39;s definitely from a native speaker<br/>
+        -- 9 means it&#39;s a foreigner talking for sure
         <br/><br/>
-        You can choose any value between 0 - 10
+        You can choose any value between 1 - 9
       </Typography>
       <Divider/>
       {files.map(file => <NativeSampleSet
