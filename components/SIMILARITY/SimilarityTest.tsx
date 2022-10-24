@@ -1,22 +1,54 @@
 import { Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { getRandomNNumbers } from '../../helper/helpers'
-import { audio_files } from '../../helper/constants'
+import { audio_files, File, Value } from '../../helper/constants'
 import SimilaritySampleSet from './SimilaritySampleSet'
 
 const divStyle = {
   color: 'red',
 }
 
-const SimilarityTest = () => {
+interface Props {
+  onValueChange: (fileValues: File[]) => void
+}
+
+const SimilarityTest = ({onValueChange}: Props) => {
   const [files, setFiles] = useState<string[]>([])
+  const [fileValues, setFileValues] = useState<File[]>([])
   
   useEffect(() => {
     const numbers = getRandomNNumbers(audio_files.length, 10)
     const random_files = numbers.map(index => audio_files[index])
     setFiles(random_files)
+    const initFileValues = random_files.map(file => {
+      const values: Value[] = ['TTS'].map(model => ({
+        m: model,
+        v: 'Same, Absolutely Sure',
+      }))
+      const fileValue: File = {
+        f: file,
+        v: values,
+      }
+      return fileValue
+    })
+    setFileValues(initFileValues)
+    onValueChange(initFileValues)
   }, [])
-  
+
+  const handleValueChange = (filename: string, values: Value[]) => {
+    const updatedFileValues = fileValues.map(fileValue => {
+      if (fileValue.f === filename) {
+        return {
+          f: filename,
+          v: values,
+        }
+      }
+      return fileValue
+    })
+    setFileValues(updatedFileValues)
+    onValueChange(updatedFileValues)
+  }
+
   return (
     <Stack spacing={2}>
       <Typography
@@ -32,7 +64,11 @@ const SimilarityTest = () => {
         <div style={divStyle}>Please ignore the quality of converted speech, just feel how do you think the speech samples are from the same speaker.</div>
       </Typography>
       <Divider/>
-      {files.map(file => <SimilaritySampleSet key={file} file_name={file}/>)}
+      {files.map(file => <SimilaritySampleSet
+        key={file}
+        file_name={file}
+        onValueChange={(values: Value[]) => handleValueChange(file, values)}
+      />)}
     </Stack>
   )
 }

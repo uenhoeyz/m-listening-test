@@ -55,7 +55,7 @@ const MURSHRATest = ({onValueChange}: Props) => {
         sx={{mt: 2, mb: 1}}
         variant="h3"
         color="common.black"
-      >Listening Test (Naturalness) 1</Typography>
+      >Listening Test (Naturalness)</Typography>
       <Typography sx={{mt: 2, mb: 1}} color="common.black">
         For each audio, please help to give your <span style={divStyle}>MUSHRA (MUltiple Stimuli with Hidden Reference and Anchor)</span> to
         it. The

@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 
 interface Props {
   audio_src: string,
-  sample_index: string
+  sample_index: string,
+  onValueChange: (value: string) => void
 }
 
 const marks = [
@@ -17,11 +18,12 @@ const marks = [
   },
 ]
 
-const NativeSample = ({audio_src, sample_index}: Props) => {
+const NativeSample = ({audio_src, sample_index, onValueChange}: Props) => {
   const [score, setScore] = useState<number>(5)
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setScore(newValue as number)
+    onValueChange((newValue as number) + '')
   }
 
   return (

@@ -4,16 +4,23 @@ import React, { useState } from 'react'
 interface Props {
   audio_src: string,
   sample_index: string,
-  is_reference: boolean
+  is_reference: boolean,
+  onValueChange: (value: string) => void
 }
 
-const options = ['Same, Absolutely Sure', 'Same, Not Sure', 'Different, Not Sure', 'Different, Absolutely Sure']
+const options = [
+  'Same, Absolutely Sure',
+  'Same, Not Sure',
+  'Different, Not Sure',
+  'Different, Absolutely Sure'
+]
 
-const SimilaritySample = ({audio_src, sample_index, is_reference}: Props) => {
+const SimilaritySample = ({audio_src, sample_index, is_reference, onValueChange}: Props) => {
   const [score, setScore] = useState<string>(options[0])
 
   const handleChange = (event: SelectChangeEvent) => {
     setScore(event.target.value as string)
+    onValueChange(event.target.value as string)
   }
 
   return (
