@@ -1,7 +1,7 @@
 import MURSHRASample from './MURSHRASample'
 import { Divider, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { models, Value } from '../../helper/constants'
+import { BASE_URL, models, Value } from '../../helper/constants'
 import { shuffle } from '../../helper/helpers'
 
 
@@ -47,7 +47,7 @@ const MURSHRASampleSet = ({file_name, onValueChange}: Props) => {
       {ms.map((model, index) => {
         return <MURSHRASample key={index_arr[index]}
                               sample_index={index_arr[index]}
-                              audio_src={'/icassp2023/' + model + '/' + file_name}
+                              audio_src={BASE_URL + model + '/' + file_name}
                               onValueChange={(value) => handleValueUpdate(value, model)}
         />
       })}

@@ -108,6 +108,7 @@ const Murshra: NextPage = () => {
             src="/thankyou.jpg"
             width={400}
             height={600}
+            alt="thank_you"
           />
           <Typography sx={{mt: 2, mb: 1}}
                       color="common.black">

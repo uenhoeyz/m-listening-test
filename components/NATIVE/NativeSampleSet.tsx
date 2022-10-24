@@ -1,6 +1,6 @@
 import { Divider, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { models_native, Value } from '../../helper/constants'
+import { BASE_URL, models_native, Value } from '../../helper/constants'
 import { shuffle } from '../../helper/helpers'
 import NativeSample from './NativeSample'
 
@@ -47,7 +47,7 @@ const NativeSampleSet = ({file_name, onValueChange}: Props) => {
       {ms.map((model, index) => {
         return <NativeSample key={index_arr[index]}
                              sample_index={index_arr[index]}
-                             audio_src={'/icassp2023/' + model + '/' + file_name}
+                             audio_src={BASE_URL + model + '/' + file_name}
                              onValueChange={(value) => handleValueUpdate(value, model)}/>
       })}
       <Divider sx={{borderBottomWidth: 5}}/>

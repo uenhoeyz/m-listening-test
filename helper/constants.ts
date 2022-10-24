@@ -2,6 +2,8 @@ export const audio_files = ['TNI_a0010.wav', 'TXHC_a0588.wav', 'LXC_b0035.wav', 
 export const models: string[] = ['parallel', 'pcm', 'ppg2mel', 'target', 'TTS']
 export const models_native: string[] = ['parallel', 'pcm', 'ppg2mel', 'target', 'TTS', 'native']
 
+export const BASE_URL = "https://yzhou012samples.s3.ap-southeast-1.amazonaws.com/icassp2023/"
+
 export interface Value {
   v: string,
   m: string

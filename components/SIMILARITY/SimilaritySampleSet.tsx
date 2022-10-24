@@ -1,7 +1,7 @@
 import { Divider, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import SimilaritySample from './SimilaritySample'
-import { Value } from '../../helper/constants'
+import { BASE_URL, Value } from '../../helper/constants'
 
 interface Props {
   file_name: string,
@@ -43,7 +43,7 @@ const SimilaritySampleSet = ({file_name, onValueChange}: Props) => {
       {ms.map((model, index) => {
         return <SimilaritySample key={index}
                                  sample_index={'A'}
-                                 audio_src={'/icassp2023/' + model + '/' + file_name}
+                                 audio_src={BASE_URL + model + '/' + file_name}
                                  onValueChange={(value) => handleValueUpdate(value, model)}
                                  is_reference={index === 0}
         />
