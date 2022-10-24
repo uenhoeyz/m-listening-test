@@ -9,11 +9,11 @@ interface Props {
 
 const marks = [
   {
-    value: 0,
+    value: 1,
     label: 'No Foreign Accent',
   },
   {
-    value: 10,
+    value: 9,
     label: 'Heavy Foreigner Accent',
   },
 ]
@@ -45,8 +45,8 @@ const NativeSample = ({audio_src, sample_index, onValueChange}: Props) => {
           valueLabelDisplay="on"
           marks={marks}
           step={1}
-          min={0}
-          max={10}
+          min={1}
+          max={9}
           onChange={handleChange}
         />
       </Box>
