@@ -1,8 +1,8 @@
 import { Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { getRandomNNumbers } from '../../helper/helpers'
-import { File, jc01_audio_files, Value } from '../../helper/constants'
-import SimilaritySampleSet from './SimilaritySampleSet'
+import { File, jc01_audio_files, jc01_models, jc01_mos_models, Value } from '../../helper/constants'
+import SimilaritySampleSetJC01 from './SimilaritySampleSetJC01'
 
 const divStyle = {
   color: 'red',
@@ -12,7 +12,7 @@ interface Props {
   onValueChange: (fileValues: File[]) => void
 }
 
-const SimilarityTest = ({onValueChange}: Props) => {
+const SimilarityTestJC01 = ({onValueChange}: Props) => {
   const [files, setFiles] = useState<string[]>([])
   const [fileValues, setFileValues] = useState<File[]>([])
 
@@ -21,7 +21,7 @@ const SimilarityTest = ({onValueChange}: Props) => {
     const random_files = numbers.map(index => jc01_audio_files[index])
     setFiles(random_files)
     const initFileValues = random_files.map(file => {
-      const values: Value[] = ['TTS'].map(model => ({
+      const values: Value[] = jc01_mos_models.map(model => ({
         m: model,
         v: 'Same, Absolutely Sure',
       }))
@@ -64,7 +64,7 @@ const SimilarityTest = ({onValueChange}: Props) => {
         <div style={divStyle}>Please ignore the quality of converted speech, just feel how do you think the speech samples are from the same speaker.</div>
       </Typography>
       <Divider/>
-      {files.map(file => <SimilaritySampleSet
+      {files.map(file => <SimilaritySampleSetJC01
         key={file}
         file_name={file}
         onValueChange={(values: Value[]) => handleValueChange(file, values)}
@@ -73,4 +73,4 @@ const SimilarityTest = ({onValueChange}: Props) => {
   )
 }
 
-export default SimilarityTest
+export default SimilarityTestJC01

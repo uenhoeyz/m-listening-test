@@ -1,6 +1,6 @@
 import { Divider, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import SimilaritySample from './SimilaritySample'
+import SimilaritySampleJC01 from './SimilaritySampleJC01'
 import { jc01_models, jc01_mos_models, jc_01_BASE_URL, Value } from '../../helper/constants'
 
 interface Props {
@@ -8,10 +8,10 @@ interface Props {
   onValueChange: (values: Value[]) => void
 }
 
-const SimilaritySampleSet = ({file_name, onValueChange}: Props) => {
+const SimilaritySampleSetJC01 = ({file_name, onValueChange}: Props) => {
   const [ms, setMs] = useState<string[]>([])
   const [values, setValues] = useState<Value[]>([])
-  const index_arr = ['A', 'B', 'C', 'D', 'E']
+  const index_arr = ['A', 'B', 'C', 'D']
 
   useEffect(() => {
     setMs(jc01_models)
@@ -41,11 +41,11 @@ const SimilaritySampleSet = ({file_name, onValueChange}: Props) => {
   return (
     <Stack spacing={4}>
       {ms.map((model, index) => {
-        return <SimilaritySample key={index}
-                                 sample_index={index_arr[index+1]}
-                                 audio_src={jc_01_BASE_URL + model + '/' + file_name}
-                                 onValueChange={(value) => handleValueUpdate(value, model)}
-                                 is_reference={index === 0}
+        return <SimilaritySampleJC01 key={index}
+                                     sample_index={index_arr[index-1]}
+                                     audio_src={jc_01_BASE_URL + model + '/' + file_name}
+                                     onValueChange={(value: string) => handleValueUpdate(value, model)}
+                                     is_reference={index === 0}
         />
       })}
       <Divider sx={{borderBottomWidth: 5}}/>
@@ -53,4 +53,4 @@ const SimilaritySampleSet = ({file_name, onValueChange}: Props) => {
   )
 }
 
-export default SimilaritySampleSet
+export default SimilaritySampleSetJC01

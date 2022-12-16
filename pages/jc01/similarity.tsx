@@ -5,7 +5,7 @@ import { File } from '../../helper/constants'
 import { API } from 'aws-amplify'
 import { createResults } from '../../src/graphql/mutations'
 import Image from 'next/image'
-import SimilarityTest from '../../components/SIMILARITY_JC01/SimilarityTest'
+import SimilarityTestJC01 from '../../components/SIMILARITY_JC01/SimilarityTestJC01'
 import { generateUID } from '../../helper/helpers'
 
 const pattern = /^[a-z0-9]+$/i
@@ -98,7 +98,7 @@ const Native: NextPage = () => {
         </Stack>}
         {!showThanksMessage && showSurvey && <Box sx={{width: '100%'}}>
           <Box margin={2}>
-            <SimilarityTest onValueChange={handleUpdateValues}/>
+            <SimilarityTestJC01 onValueChange={handleUpdateValues}/>
             <Stack sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
               <Box sx={{flex: '1 1 auto'}}/>
               <Button onClick={handleNext}>
@@ -118,11 +118,11 @@ const Native: NextPage = () => {
                       color="common.black">
             Photo by <a href="https://unsplash.com/@calebchen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Caleb Chen</a> on <a href="https://unsplash.com/s/photos/thank-you?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
           </Typography>
-          {/*<Typography sx={{mt: 2, mb: 1}}*/}
-          {/*            variant="h2"*/}
-          {/*            color="common.black">*/}
-          {/*  Your survey code: {surveyCode}*/}
-          {/*</Typography>*/}
+          <Typography sx={{mt: 2, mb: 1}}
+                      variant="h2"
+                      color="common.black">
+            Your survey code: {surveyCode}
+          </Typography>
         </Box>}
       </Container>
     </Box>

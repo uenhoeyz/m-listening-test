@@ -15,7 +15,7 @@ const options = [
   'Different, Absolutely Sure'
 ]
 
-const SimilaritySample = ({audio_src, sample_index, is_reference, onValueChange}: Props) => {
+const SimilaritySampleJC01 = ({audio_src, sample_index, is_reference, onValueChange}: Props) => {
   const [score, setScore] = useState<string>(options[0])
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -52,4 +52,4 @@ const SimilaritySample = ({audio_src, sample_index, is_reference, onValueChange}
   )
 }
 
-export default SimilaritySample
+export default SimilaritySampleJC01

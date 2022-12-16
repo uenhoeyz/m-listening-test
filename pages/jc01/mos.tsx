@@ -118,11 +118,11 @@ const Mos: NextPage = () => {
                       color="common.black">
             Photo by <a href="https://unsplash.com/@calebchen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Caleb Chen</a> on <a href="https://unsplash.com/s/photos/thank-you?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
           </Typography>
-          {/*<Typography sx={{mt: 2, mb: 1}}*/}
-          {/*            variant="h2"*/}
-          {/*            color="common.black">*/}
-          {/*  Your survey code: {surveyCode}*/}
-          {/*</Typography>*/}
+          <Typography sx={{mt: 2, mb: 1}}
+                      variant="h2"
+                      color="common.black">
+            Your survey code: {surveyCode}
+          </Typography>
         </Box>}
       </Container>
     </Box>
