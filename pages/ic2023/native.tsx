@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import { AppBar, Box, Button, Container, Stack, TextField, Toolbar, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import MURSHRATest from '../../components/MURSHRA/MURSHRATest'
 import { File } from '../../helper/constants'
 import { API } from 'aws-amplify'
 import { createResults } from '../../src/graphql/mutations'
