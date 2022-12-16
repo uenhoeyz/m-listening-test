@@ -1,14 +1,14 @@
 import type { NextPage } from 'next'
 import { AppBar, Box, Button, Container, Stack, TextField, Toolbar, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import MURSHRATest from '../components/MURSHRA/MURSHRATest'
-import { File } from '../helper/constants'
+import MURSHRATest from '../../components/MURSHRA/MURSHRATest'
+import { File } from '../../helper/constants'
 import { API } from 'aws-amplify'
-import { createResults } from '../src/graphql/mutations'
+import { createResults } from '../../src/graphql/mutations'
 import Image from 'next/image'
-import NativeTest from '../components/NATIVE/NativeTest'
-import SimilarityTest from '../components/SIMILARITY/SimilarityTest'
-import { generateUID } from '../helper/helpers'
+import NativeTest from '../../components/NATIVE/NativeTest'
+import SimilarityTest from '../../components/SIMILARITY/SimilarityTest'
+import { generateUID } from '../../helper/helpers'
 
 const pattern = /^[a-z0-9]+$/i
 

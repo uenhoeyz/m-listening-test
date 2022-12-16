@@ -1,17 +1,16 @@
 import type { NextPage } from 'next'
 import { AppBar, Box, Button, Container, Stack, TextField, Toolbar, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import MURSHRATest from '../components/MURSHRA/MURSHRATest'
-import { File } from '../helper/constants'
+import MURSHRATest from '../../components/MURSHRA/MURSHRATest'
+import { File } from '../../helper/constants'
 import { API } from 'aws-amplify'
-import { createResults } from '../src/graphql/mutations'
+import { createResults } from '../../src/graphql/mutations'
 import Image from 'next/image'
-import NativeTest from '../components/NATIVE/NativeTest'
-import { generateUID } from '../helper/helpers'
+import { generateUID } from '../../helper/helpers'
 
 const pattern = /^[a-z0-9]+$/i
 
-const Native: NextPage = () => {
+const Murshra: NextPage = () => {
   const [mTurkUserName, setMTurkUserName] = useState('')
   const [showSurvey, setShowSurvey] = useState(false)
   const [showUserNameError, setShowUserNameError] = useState(false)
@@ -32,7 +31,7 @@ const Native: NextPage = () => {
             variables: {
               input: {
                 'user': mTurkUserName + ':' + sCode,
-                'test': 'Native',
+                'test': 'MURSHRA',
                 'model': value.m,
                 'file': fileValue.f,
                 'result': value.v,
@@ -79,7 +78,7 @@ const Native: NextPage = () => {
             component="div"
             sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}
           >
-            Listening Test (Accent Level)
+            Listening Test (Naturalness)
           </Typography>
         </Toolbar>
       </AppBar>
@@ -99,7 +98,7 @@ const Native: NextPage = () => {
         </Stack>}
         {!showThanksMessage && showSurvey && <Box sx={{width: '100%'}}>
           <Box margin={2}>
-            <NativeTest onValueChange={handleUpdateValues}/>
+            <MURSHRATest onValueChange={handleUpdateValues}/>
             <Stack sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
               <Box sx={{flex: '1 1 auto'}}/>
               <Button onClick={handleNext}>
@@ -131,4 +130,4 @@ const Native: NextPage = () => {
   )
 }
 
-export default Native
+export default Murshra
