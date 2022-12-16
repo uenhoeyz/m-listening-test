@@ -1,6 +1,6 @@
 import { Divider, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { BASE_URL, models_native, Value } from '../../helper/constants'
+import { jc01_mos_models, jc_01_BASE_URL, Value } from '../../helper/constants'
 import { shuffle } from '../../helper/helpers'
 import MosSample from './MosSample'
 
@@ -15,7 +15,7 @@ const MosSampleSet = ({file_name, onValueChange}: Props) => {
   const [values, setValues] = useState<Value[]>([])
 
   useEffect(() => {
-    const models_copy: string[] = [...models_native]
+    const models_copy: string[] = [...jc01_mos_models]
     const models_shuffle: string[] = shuffle(models_copy)
 
     setMs(models_shuffle)
@@ -47,7 +47,7 @@ const MosSampleSet = ({file_name, onValueChange}: Props) => {
       {ms.map((model, index) => {
         return <MosSample key={index_arr[index]}
                           sample_index={index_arr[index]}
-                          audio_src={BASE_URL + model + '/' + file_name}
+                          audio_src={jc_01_BASE_URL + model + '/' + file_name}
                           onValueChange={(value) => handleValueUpdate(value, model)}/>
       })}
       <Divider sx={{borderBottomWidth: 5}}/>

@@ -1,7 +1,7 @@
 import { Divider, Stack, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { getRandomNNumbers } from '../../helper/helpers'
-import { audio_files, models_native, File, Value } from '../../helper/constants'
+import { models_native, File, Value, jc01_audio_files } from '../../helper/constants'
 import MosSampleSet from './MosSampleSet'
 
 interface Props {
@@ -13,8 +13,8 @@ const MosTest = ({onValueChange}: Props) => {
   const [fileValues, setFileValues] = useState<File[]>([])
 
   useEffect(() => {
-    const numbers = getRandomNNumbers(audio_files.length, 10)
-    const random_files = numbers.map(index => audio_files[index])
+    const numbers = getRandomNNumbers(jc01_audio_files.length, 10)
+    const random_files = numbers.map(index => jc01_audio_files[index])
     setFiles(random_files)
     const initFileValues = random_files.map(file => {
       const values: Value[] = models_native.map(model => ({
@@ -51,7 +51,7 @@ const MosTest = ({onValueChange}: Props) => {
         sx={{mt: 2, mb: 1}}
         variant="h3"
         color="common.black"
-      >Listening Test</Typography>
+      >Listening Test (MOS)</Typography>
       <Typography sx={{mt: 2, mb: 1}} color="common.black">
         For each audio, please help to give your <b>MOS (mean opinion score)</b> to it. The MOS is expressed as a single rational number, typically in the range 1-5, shown in below:
         <br/><br/>
@@ -61,7 +61,6 @@ const MosTest = ({onValueChange}: Props) => {
         2 - Poor. Nearly impossible to communicate.
         1 - Bad. Impossible to communicate.
         <br/><br/>
-        The values do not need to be whole numbers. For example, a value of 4.0 to 4.5 is referred to as toll-quality and causes complete satisfaction.
       </Typography>
       <Divider/>
       {files.map(file => <MosSampleSet

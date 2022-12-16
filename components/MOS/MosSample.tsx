@@ -40,7 +40,7 @@ const MosSample = ({audio_src, sample_index, onValueChange}: Props) => {
       </audio>
       <Box sx={{width: 500}} pl={10}>
         <Slider
-          aria-label="accent"
+          aria-label="mos"
           defaultValue={3}
           valueLabelDisplay="on"
           marks={marks}
