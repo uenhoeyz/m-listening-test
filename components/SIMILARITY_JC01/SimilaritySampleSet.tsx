@@ -1,28 +1,24 @@
 import { Divider, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { jc01_mos_models, jc_01_BASE_URL, Value } from '../../helper/constants'
-import { shuffle } from '../../helper/helpers'
-import MosSample from './MosSample'
+import SimilaritySample from './SimilaritySample'
+import { jc01_models, jc01_mos_models, jc_01_BASE_URL, Value } from '../../helper/constants'
 
 interface Props {
   file_name: string,
   onValueChange: (values: Value[]) => void
 }
 
-const MosSampleSet = ({file_name, onValueChange}: Props) => {
-  const index_arr = ['A', 'B', 'C', 'D', 'E']
+const SimilaritySampleSet = ({file_name, onValueChange}: Props) => {
   const [ms, setMs] = useState<string[]>([])
   const [values, setValues] = useState<Value[]>([])
+  const index_arr = ['A', 'B', 'C', 'D', 'E']
 
   useEffect(() => {
-    const models_copy: string[] = [...jc01_mos_models]
-    const models_shuffle: string[] = shuffle(models_copy)
-
-    setMs(models_shuffle)
-    const vs = models_shuffle.map(model => (
+    setMs(jc01_models)
+    const vs = jc01_mos_models.map(model => (
       {
         m: model,
-        v: '3'
+        v: 'Same, Absolutely Sure'
       }
     ))
     setValues(vs)
@@ -45,14 +41,16 @@ const MosSampleSet = ({file_name, onValueChange}: Props) => {
   return (
     <Stack spacing={4}>
       {ms.map((model, index) => {
-        return <MosSample key={index_arr[index]}
-                          sample_index={index_arr[index]}
-                          audio_src={jc_01_BASE_URL + model + '/' + file_name}
-                          onValueChange={(value) => handleValueUpdate(value, model)}/>
+        return <SimilaritySample key={index}
+                                 sample_index={index_arr[index+1]}
+                                 audio_src={jc_01_BASE_URL + model + '/' + file_name}
+                                 onValueChange={(value) => handleValueUpdate(value, model)}
+                                 is_reference={index === 0}
+        />
       })}
       <Divider sx={{borderBottomWidth: 5}}/>
     </Stack>
   )
 }
 
-export default MosSampleSet
+export default SimilaritySampleSet
