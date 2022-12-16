@@ -78,7 +78,7 @@ const Mos: NextPage = () => {
             component="div"
             sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}
           >
-            Listening Test (Accent Level)
+            Listening Test (MOS)
           </Typography>
         </Toolbar>
       </AppBar>
